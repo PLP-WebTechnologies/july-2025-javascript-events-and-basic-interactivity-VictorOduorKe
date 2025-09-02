@@ -47,7 +47,8 @@ register.addEventListener("submit", (e) => {
     const username = document.getElementById("username").value.trim();
     const email = document.getElementById("email").value.trim();
     const password=document.getElementById("password").value.trim();
-
+    
+     //------checking if any fiels is empty
     if (username.value == "" || email.value=="" ||password.value=="") {
         message.innerHTML = "fill all fields";
         message.classList.add("error")
@@ -59,6 +60,8 @@ register.addEventListener("submit", (e) => {
         return
     }
 
+
+    //-----checcking username length------
     if(username.length<4){
          message.innerHTML = "Username cannot be less than 4 characters";
         message.classList.add("error")
@@ -68,6 +71,8 @@ register.addEventListener("submit", (e) => {
             message.classList.remove("error")
         }, 3000);
     }
+
+    //------checking email validity
 const regX= /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if(!regX.test(email)){
         message.innerHTML = "invalid email";
@@ -80,6 +85,7 @@ const regX= /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         return
     }
 
+    //checking password strength
     const passwordPattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
  if(!passwordPattern.test(password)){
         message.innerHTML = "Password must be 8 characters long, one captital and lowercase, number and special character";
